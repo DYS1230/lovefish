@@ -1,37 +1,32 @@
-function DustObj()
-{
-	this.x=[];
-	this.y=[];
-	this.number=50;          //³¾°£ÊıÁ¿
-	this.range=[];            //Õñ¶¯·ù¶È
-	this.alpha=0;            //½Ç¶È
-	this.dustPic=[];         //Í¼Æ¬
-	this.picNumber=[];        //³¾°£ÎªµÚ¼¸ÕÅÍ¼Æ¬
+function DustObj() {
+	this.x = [];
+	this.y = []; 
+	this.number = 50;          //å°˜åŸƒæ•°é‡
+	this.range = [];            //æŒ¯åŠ¨å¹…åº¦
+	this.alpha = 0;            //è§’åº¦
+	this.dustPic = [];         //å›¾ç‰‡
+	this.picNumber = [];        //å°˜åŸƒä¸ºç¬¬å‡ å¼ å›¾ç‰‡
 }
-DustObj.prototype.initDust=function()
-{
-	for(var i=0;i<7;i++)       //Ô¤¼ÓÔØ
-	{
-		this.dustPic[i]=new Image();
-		this.dustPic[i].src="src/dust" + i + ".png";
+
+DustObj.prototype.initDust = function () {
+	for (var i = 0; i < 7; i++) {     //é¢„åŠ è½½
+		this.dustPic[i] = new Image();
+		this.dustPic[i].src = 'src/dust' + i + '.png';
 	}
-	for(var j=0;j<this.number;j++)
-	{
-		this.x[j]=Math.random()*drawWidth;      //Ëæ»ú¶¨Òå³¾°£x£¬y×ø±ê£¬³¾°£·ù¶È
-		this.y[j]=Math.random()*drawHeight;
-		this.range[j]=Math.random()*50+30;    
-		this.picNumber[j]=Math.floor( Math.random()*6 );      //³¾°£ÎªµÚ¼¸ÕÅÍ¼Æ¬
-	}
-}
-DustObj.prototype.drawDust=function()
-{
-	this.alpha+=deltaTime * 0.001;
-	this.alpha%=Math.PI * 2;
-	var temp=Math.sin(this.alpha);         //³¾°£ÒÔÕıÏÒº¯ÊıÒÆ¶¯
-	
-	for(var i=0;i<this.number;i++)
-	{
-		contextBack.drawImage(this.dustPic[this.picNumber[i]],this.x[i]+this.range[i]*temp,this.y[i]);
+	for (var j = 0 ; j < this.number; j++) {
+		this.x[j] = Math.random() * drawWidth;      //éšæœºå®šä¹‰å°˜åŸƒxï¼Œyåæ ‡ï¼Œå°˜åŸƒå¹…åº¦
+		this.y[j] = Math.random() * drawHeight;
+		this.range[j] = Math.random() * 50 + 30;    
+		this.picNumber[j] = Math.floor(Math.random() * 6);      //å°˜åŸƒä¸ºç¬¬å‡ å¼ å›¾ç‰‡
 	}
 }
 
+DustObj.prototype.drawDust=function() { 
+	this.alpha += deltaTime * 0.001;
+	this.alpha %= Math.PI * 2;
+	var temp = Math.sin(this.alpha);         //å°˜åŸƒä»¥æ­£å¼¦å‡½æ•°ç§»åŠ¨
+	
+	for (var i = 0; i < this.number; i++) {
+		contextBack.drawImage(this.dustPic[this.picNumber[i]], this.x[i] + this.range[i] * temp, this.y[i]);
+	}
+}

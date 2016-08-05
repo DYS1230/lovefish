@@ -3,13 +3,79 @@
 <title>爱心鱼</title>
 <meta charset="utf-8">
 <style>
-body{padding-top:10px;}
-#picture{width:800; height:600; margin:0 auto; position:relative;}
-#front{position:absolute; top:0; bottom:0; z-index:2;}
-#back{position:absolute; top:0; bottom:0; z-index:0;}
+#picture {
+	width: 800;
+	height: 600;
+	margin: 0 auto;
+	position: relative;
+}
+#front {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	z-index: 2;
+}
+#back {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	z-index: 1;
+}
+.modal {
+	position: absolute;
+	margin: 0 auto;
+	width: 500px;
+	border-radius: 5px;
+	border: 1px solid rgba(0,0,0,.2);
+	top: 160px;
+	left: calc( 50% - 250px);
+	z-index: -1;
+	background: white;
+	opacity: 0;
+	transform: translate(0, -100px);
+	transition: opacity 1s, transform 1s;}
+.positionChange {
+	transform: translate(0, 0);
+	opacity: 1;
+	z-index: 9999;}
+#content {
+	font-size: 20px;
+	border-bottom: 1px solid rgba(0,0,0,.2);
+	padding:20px;
+}
+#footer{
+	text-align: right;
+	padding: 10px;
+}
+#footer button {
+	padding: 6px 12px;
+	font-size: 14px;
+	text-align: center;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	background: white;
+	cursor: pointer;
+	outline:none;
+}
+#footer button:hover {
+	background-color: #ebebeb;
+}
+@keyframes opacityChange {
+	from {opacity: 0} 
+	to {opacity: 0.5}
+}
+#shade {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 99;
+	background: #7F7F7F;
+	animation: opacityChange .4s ease-out forwards;
+}
 </style>
 <script src="commonFunctions.js"></script>
-<script src="background.js"></script>
 <script src="ane.js"></script>
 <script src="fruit.js"></script>
 <script src="mom.js"></script>
@@ -24,5 +90,13 @@ body{padding-top:10px;}
 	<div id="picture">
 		<canvas id="front" width="800" height="600"></canvas> 
 		<canvas id="back" width="800" height="600"></canvas>
+	</div>
+	<div class="modal">
+		<div id="content">重新开始</div>
+		<div id="footer">
+			<button id="yes">Yes</button>
+			<button id="no">No</button>
+		</div>
+	</div>
 </body>
 </html>
