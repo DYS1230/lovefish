@@ -47,7 +47,6 @@ BabyObj.prototype.drawBaby = function () {
 			this.bodyCount++;          //序号变化
 			this.bodyCount %= 20;        //序号为0~19
 			this.bodyTime %= 200;       // 200ms 变一次
-			console.log(this.bodyCount)
 		} else {
 			data.gameover = true;					 //小鱼死了
 		}
